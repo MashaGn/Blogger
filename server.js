@@ -7,7 +7,7 @@ const app = express();
 const clientPath = path.join(__dirname, 'public');
 
 var corsOptions = {
-  origin: "http://ip:8081"
+  origin: "http://5.101.51.30:8081"
 };
 
 app.use(cors(corsOptions))
