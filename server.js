@@ -2,9 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
+const history = require('connect-history-api-fallback')
 
 const app = express();
-const clientPath = path.join(__dirname, 'public');
+
+const staticFile = express.static(path.join(__dirname, 'public', '/'))
+//const clientPath = path.join(__dirname, 'public');
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -13,7 +16,7 @@ var corsOptions = {
 app.use(cors(corsOptions))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({ extended: true }))
-   .use(express.static(clientPath));
+   .use(staticFile);
 
 const db = require("./app/models");
 db.mongoose
