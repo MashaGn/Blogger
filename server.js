@@ -16,7 +16,11 @@ var corsOptions = {
 app.use(cors(corsOptions))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({ extended: true }))
-   .use(staticFile);
+   .use(staticFile)
+   .use(history({
+     disableDotRule:true,
+     verbose:true
+   }))
 
 const db = require("./app/models");
 db.mongoose
